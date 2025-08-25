@@ -1,0 +1,40 @@
+<div class="max-w-4xl mx-auto p-2 sm:p-4 md:p-6">
+    <div class="bg-white/90 rounded-xl shadow-xl p-2 sm:p-4 md:p-8 border border-base-200">
+        <h1 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-2">📘 Objetivos por Unidades</h1>
+        @for (unidad of contenido().objetivosPorUnidades; track unidad) {
+        <div class="mb-6 sm:mb-8">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 mb-2">
+                <h2 class="text-lg sm:text-xl font-semibold">{{ unidad.unidad }}</h2>
+                <span class="badge badge-info badge-outline">{{ unidad.fecha }}</span>
+            </div>
+            <div class="overflow-x-auto scrollbar-thin scrollbar-thumb-base-300 scrollbar-track-base-100">
+                <table class="table table-zebra w-full min-w-[600px] rounded-lg shadow text-xs sm:text-sm">
+                    <thead class="bg-base-200">
+                        <tr>
+                            <th>Área</th>
+                            <th>Objetivo SMART</th>
+                            <th>Nº Veces</th>
+                            <th>Nº Aciertos</th>
+                            <th>% Aciertos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (obj of unidad.objetivos; track obj) {
+                        <tr>
+                            <td class="font-semibold align-top">{{ obj.area }}</td>
+                            <td class="align-top">{{ obj.objetivoSMART }}</td>
+                            <td class="text-center align-top">{{ obj.numeroDeVeces ?? '-' }}</td>
+                            <td class="text-center align-top">{{ obj.numeroDeAciertos ?? '-' }}</td>
+                            <td class="text-center align-top">{{ obj.porcentajeDeAciertos ?? '-' }}</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @if (unidad.observaciones) {
+            <div class="alert alert-info mt-2">Observaciones: {{ unidad.observaciones }}</div>
+            }
+        </div>
+        }
+    </div>
+</div>

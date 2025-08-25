@@ -1,0 +1,71 @@
+{
+    "objetivosPorUnidades": [
+        {
+            "unidad": "UNIDAD 1",
+            "fecha": "del 15 de septiembre al 3 de octubre",
+            "objetivos": [
+                {
+                    "area": "FONÉTICA-FONOLOGÍA",
+                    "objetivoSMART": "En un período de 2 semanas, el alumno logrará discriminar auditivamente el fonema /s/ en palabras aisladas, obteniendo al menos un 80% de aciertos.",
+                    "numeroDeVeces": null,
+                    "numeroDeAciertos": null,
+                    "porcentajeDeAciertos": null
+                },
+                {
+                    "area": "SEMÁNTICA",
+                    "objetivoSMART": "En un período de 2 semanas, el alumno comprenderá sustantivos relacionados con el cuidado personal y ambiental —tales como obesidad, dieta, salud, actividad física, ahorro, reutilización, contaminación—, demostrando su comprensión mediante la correcta definición o uso en oraciones en al menos un 70% de los casos en tareas guiadas.",
+                    "numeroDeVeces": null,
+                    "numeroDeAciertos": null,
+                    "porcentajeDeAciertos": null
+                },
+                {
+                    "area": "MORFOLOGÍA-SINTAXIS",
+                    "objetivoSMART": "En un período de 2 semanas, el alumno comprenderá frases que contengan artículos determinados (el, la, los, las) e indeterminados (un, una, unos, unas), demostrando esta comprensión mediante respuestas correctas en actividades orales o escritas con al menos un 80% de aciertos.",
+                    "numeroDeVeces": null,
+                    "numeroDeAciertos": null,
+                    "porcentajeDeAciertos": null
+                },
+                {
+                    "area": "PRAGMÁTICA",
+                    "objetivoSMART": "En un período de 2 semanas, el alumno comprenderá el significado de expresiones faciales y miradas como estrategias comunicativas, demostrando su comprensión al identificar correctamente al menos un 80% de las emociones o intenciones expresadas en actividades.",
+                    "numeroDeVeces": null,
+                    "numeroDeAciertos": null,
+                    "porcentajeDeAciertos": null
+                }
+            ],
+            "observaciones": null
+        }
+    ],
+        "familia": {
+        "preocupacionesNecesidades": [
+            {
+                "intervencionConLaFamilia": "“Mi hijo tiene algunos berrinches y no entra en razón”.",
+                "preocupacionNecesidad": "FAMILIA: ofrecer formas para reconducirlo.",
+                "objetivo": "Reconducirlo con su centro de interés (animales marinos), refuerzo positivo, historias sociales, horario personalizado…",
+                "rutina": null
+            },
+            {
+                "intervencionConLaFamilia": "“Mi hijo no suele relacionarse fuera del colegio”.",
+                "preocupacionNecesidad": "NIÑO: aprender habilidades sociales.",
+                "objetivo": "Modelar: el adulto proporciona al alumno distintas oportunidades de interacción social y participación en actividades de la vida cotidiana (ir de compras, a un restaurante, a tomar un helado, al cine…), ofreciendo pautas claras, rutinas desglosadas por pasos y utilizando estrategias como el encadenamiento hacia atrás.",
+                "rutina": null
+            }
+        ],
+            "planificacionPorRutinasFamiliares": {
+            "descripcionConducta": "Madre: “Cuando voy con Nico a algún sitio que él no quiere o no le apetece, se calla y no habla. Solo lo hace conmigo”.",
+                "razones": [
+                    "Porque tiene un berrinche.",
+                    "Porque así observa que me enfado con él y tiene mi atención.",
+                    "Para que haga solamente lo que a él le apetece."
+                ],
+                    "prevencion": "Anticipar la situación y ofrecerle una actividad de su interés para realizar después.",
+                        "accionSiAparece": "No darle nada sino lo solicita oralmente y automáticamente anular la actividad para realizar después.",
+                            "habilidadesANuevas": [
+                                "A expresarse y comunicarse en distintas situaciones, observando y recibiendo beneficios.",
+                                "A expresar: “ahora vamos a hacer …… porque… y después vamos a hacer …… porque…”",
+                                "A empatizar con los demás."
+                            ]
+        },
+        "orientacionesRecursos": "SOLO PARA AL, aunque lo comparto con el equipo EAD."
+    }
+}

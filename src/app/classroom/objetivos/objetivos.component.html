@@ -1,0 +1,92 @@
+<div class="max-w-5xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6 flex items-center gap-2">📘 Objetivos por Unidades</h1>
+    @for (unidad of contenido().objetivosPorUnidades; track unidad) {
+    <div class="mb-8">
+        <div class="flex items-center gap-4 mb-2">
+            <h2 class="text-xl font-semibold">{{ unidad.unidad }}</h2>
+            <span class="badge badge-info badge-outline">{{ unidad.fecha }}</span>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="table table-zebra w-full rounded-lg shadow">
+                <thead class="bg-base-200">
+                    <tr>
+                        <th>Área</th>
+                        <th>Objetivo SMART</th>
+                        <th>Nº Veces</th>
+                        <th>Nº Aciertos</th>
+                        <th>% Aciertos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (obj of unidad.objetivos; track obj) {
+                    <tr>
+                        <td class="font-semibold">{{ obj.area }}</td>
+                        <td>{{ obj.objetivoSMART }}</td>
+                        <td class="text-center">{{ obj.numeroDeVeces ?? '-' }}</td>
+                        <td class="text-center">{{ obj.numeroDeAciertos ?? '-' }}</td>
+                        <td class="text-center">{{ obj.porcentajeDeAciertos ?? '-' }}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        @if (unidad.observaciones) {
+        <div class="alert alert-info mt-2">Observaciones: {{ unidad.observaciones }}</div>
+        }
+    </div>
+    }
+
+    <h1 class="text-3xl font-bold mb-4 flex items-center gap-2">👨‍👩‍👦 Familia</h1>
+    <h2 class="text-xl font-semibold mb-2">Preocupaciones / Necesidades</h2>
+    <div class="overflow-x-auto mb-8">
+        <table class="table table-zebra w-full rounded-lg shadow">
+            <thead class="bg-base-200">
+                <tr>
+                    <th>Intervención con la familia</th>
+                    <th>Preocupación / Necesidad</th>
+                    <th>Objetivo</th>
+                    <th>Rutina</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (p of contenido().familia.preocupacionesNecesidades; track p) {
+                <tr>
+                    <td>{{ p.intervencionConLaFamilia }}</td>
+                    <td>{{ p.preocupacionNecesidad }}</td>
+                    <td>{{ p.objetivo }}</td>
+                    <td>{{ p.rutina ?? '-' }}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <h2 class="text-xl font-semibold mb-2">Planificación por rutinas familiares</h2>
+    <div class="card bg-base-100 shadow mb-8">
+        <div class="card-body">
+            <p><strong>Descripción de la conducta:</strong> {{
+                contenido().familia.planificacionPorRutinasFamiliares.descripcionConducta }}</p>
+            <p class="mt-2"><strong>Razones:</strong></p>
+            <ul class="list-disc list-inside ml-4">
+                @for (r of contenido().familia.planificacionPorRutinasFamiliares.razones; track r) {
+                <li>{{ r }}</li>
+                }
+            </ul>
+            <p class="mt-2"><strong>Prevención:</strong> {{
+                contenido().familia.planificacionPorRutinasFamiliares.prevencion }}</p>
+            <p><strong>Acción si aparece:</strong> {{
+                contenido().familia.planificacionPorRutinasFamiliares.accionSiAparece }}</p>
+            <p class="mt-2"><strong>Nuevas habilidades:</strong></p>
+            <ul class="list-disc list-inside ml-4">
+                @for (h of contenido().familia.planificacionPorRutinasFamiliares.habilidadesANuevas; track h) {
+                <li>{{ h }}</li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <h2 class="text-xl font-semibold mb-2">Orientaciones y Recursos</h2>
+    <div class="alert alert-success shadow">
+        {{ contenido().familia.orientacionesRecursos }}
+    </div>
+</div>

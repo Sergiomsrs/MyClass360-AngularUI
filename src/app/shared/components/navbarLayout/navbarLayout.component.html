@@ -1,0 +1,56 @@
+<div class="navbar bg-neutral text-neutral-content shadow-sm px-4">
+    <!-- Logo a la izquierda -->
+    <div class="flex-none">
+        <a class="btn btn-ghost text-xl" routerLink="/">MyClass360</a>
+    </div>
+    <!-- Menú hamburguesa en móvil -->
+    <div class="flex-1 flex justify-center">
+        <div class="lg:hidden dropdown">
+            <label tabindex="0" class="btn btn-ghost btn-circle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </label>
+            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-neutral rounded-box w-52">
+                <li><button class="btn btn-ghost w-full text-left" routerLink="/class/home/objetivos"
+                        routerLinkActive="btn-secondary">Objetivos</button></li>
+                <li><button class="btn btn-ghost w-full text-left" routerLink="/class/home/familia"
+                        routerLinkActive="btn-secondary">Familia</button></li>
+                <li><button class="btn btn-ghost w-full text-left" routerLink="/class/home/orientaciones"
+                        routerLinkActive="btn-secondary">Orientaciones</button></li>
+            </ul>
+        </div>
+        <!-- Botones centrados en desktop -->
+        <div class="hidden lg:flex join join-horizontal ml-16">
+            <button class="btn join-item" routerLink="/class/home/objetivos"
+                routerLinkActive="btn-secondary">Objetivos</button>
+            <button class="btn join-item" routerLink="/class/home/familia"
+                routerLinkActive="btn-secondary">Familia</button>
+            <button class="btn join-item" routerLink="/class/home/orientaciones"
+                routerLinkActive="btn-secondary">Orientaciones</button>
+        </div>
+    </div>
+    <!-- Buscador y dropdown a la derecha -->
+    <div class="flex-none flex gap-2 items-center">
+        <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+        <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                <div class="w-10 rounded-full">
+                    <img alt="Tailwind CSS Navbar component"
+                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                </div>
+            </div>
+            <ul tabindex="0" class="menu menu-sm dropdown-content bg-neutral rounded-box z-1 mt-3 w-52 p-2 shadow">
+                <li>
+                    <a class="justify-between">
+                        Profile
+                        <span class="badge">New</span>
+                    </a>
+                </li>
+                <li><a>Settings</a></li>
+                <li><a>Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
