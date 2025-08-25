@@ -1,7 +1,18 @@
 <div class="flex flex-col min-h-screen">
     <navbar-layout />
-    <div class="flex-1">
-        <router-outlet />
+    <div class="hero min-h-screen relative overflow-x-auto">
+        <div class="absolute inset-0 -z-10" style="
+         background-image: url('assets/homePageBg.webp');
+         background-size: cover;
+         background-position: 50% center;
+         background-repeat: no-repeat;
+         transform: scaleX(-1);
+       ">
+        </div>
+        <div class="hero-overlay" style="background: rgba(0,0,0,0.1);"></div>
+        <div class="hero-content w-full max-w-full px-2 sm:px-4 md:px-8 text-center">
+            <router-outlet />
+        </div>
     </div>
     <footer-layout />
 </div>

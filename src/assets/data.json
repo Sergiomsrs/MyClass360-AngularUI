@@ -36,7 +36,7 @@
             "observaciones": null
         }
     ],
-        "familia": {
+    "familia": {
         "preocupacionesNecesidades": [
             {
                 "intervencionConLaFamilia": "“Mi hijo tiene algunos berrinches y no entra en razón”.",
@@ -51,21 +51,20 @@
                 "rutina": null
             }
         ],
-            "planificacionPorRutinasFamiliares": {
+        "planificacionPorRutinasFamiliares": {
             "descripcionConducta": "Madre: “Cuando voy con Nico a algún sitio que él no quiere o no le apetece, se calla y no habla. Solo lo hace conmigo”.",
-                "razones": [
-                    "Porque tiene un berrinche.",
-                    "Porque así observa que me enfado con él y tiene mi atención.",
-                    "Para que haga solamente lo que a él le apetece."
-                ],
-                    "prevencion": "Anticipar la situación y ofrecerle una actividad de su interés para realizar después.",
-                        "accionSiAparece": "No darle nada sino lo solicita oralmente y automáticamente anular la actividad para realizar después.",
-                            "habilidadesANuevas": [
-                                "A expresarse y comunicarse en distintas situaciones, observando y recibiendo beneficios.",
-                                "A expresar: “ahora vamos a hacer …… porque… y después vamos a hacer …… porque…”",
-                                "A empatizar con los demás."
-                            ]
-        },
-        "orientacionesRecursos": "SOLO PARA AL, aunque lo comparto con el equipo EAD."
+            "razones": [
+                "Porque tiene un berrinche.",
+                "Porque así observa que me enfado con él y tiene mi atención.",
+                "Para que haga solamente lo que a él le apetece."
+            ],
+            "prevencion": "Anticipar la situación y ofrecerle una actividad de su interés para realizar después.",
+            "accionSiAparece": "No darle nada sino lo solicita oralmente y automáticamente anular la actividad para realizar después.",
+            "habilidadesANuevas": [
+                "A expresarse y comunicarse en distintas situaciones, observando y recibiendo beneficios.",
+                "A expresar: “ahora vamos a hacer …… porque… y después vamos a hacer …… porque…”",
+                "A empatizar con los demás."
+            ]
+        }
     }
 }
