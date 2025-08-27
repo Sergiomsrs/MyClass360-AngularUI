@@ -5,6 +5,7 @@ import { ObjetivosUnidadesComponent } from './classroom/components/objetivosUnid
 import { FamiliaComponent } from './classroom/components/familia/familia.component';
 import { OrientacionesComponent } from './classroom/components/orientaciones/orientaciones.component';
 import { WordSearchGeneratorComponent } from './resources/wordSearchGenerator/wordSearchGenerator.component';
+import { ResourcesMenuComponent } from './classroom/components/resourcesMenu/resourcesMenu.component';
 
 export const routes: Routes = [
 
@@ -31,6 +32,10 @@ export const routes: Routes = [
             {
                 path: 'letras',
                 component: WordSearchGeneratorComponent
+            },
+            {
+                path: 'selector',
+                component: ResourcesMenuComponent
             },
             { path: '', redirectTo: 'objetivos', pathMatch: 'full' },
 

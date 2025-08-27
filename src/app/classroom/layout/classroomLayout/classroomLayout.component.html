@@ -1,6 +1,6 @@
 <div class="flex flex-col min-h-screen">
     <navbar-layout />
-    <div class="hero min-h-screen relative overflow-x-auto">
+    <div class="flex-1 hero min-h-0 relative overflow-x-auto">
         <div class="absolute inset-0 -z-10" style="
          background-image: url('assets/homePageBg.webp');
          background-size: cover;
@@ -10,7 +10,7 @@
        ">
         </div>
         <div class="hero-overlay" style="background: rgba(0,0,0,0.1);"></div>
-        <div class="hero-content w-full max-w-full px-2 sm:px-4 md:px-8 text-center">
+        <div class="hero-content w-full max-w-full px-2 sm:px-4 md:px-8 text-center over">
             <router-outlet />
         </div>
     </div>
