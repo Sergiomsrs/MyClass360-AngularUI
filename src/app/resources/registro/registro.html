@@ -1,12 +1,19 @@
 <div class="min-h-screen bg-slate-50 p-4 md:p-8 font-sans text-slate-800">
     <div class="max-w-7xl mx-auto">
 
-        <header class="mb-10 text-center md:text-left">
-            <h1
-                class="text-3xl md:text-4xl font-extrabold text-indigo-700 flex items-center justify-center md:justify-start gap-3">
-                <span>📓</span> Diario de Sesión
-            </h1>
-            <p class="text-slate-500 mt-2">Panel de control de progresos de alumnos</p>
+        <header class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-indigo-700 flex items-center gap-3">
+                    <span>📓</span> Diario de Sesión
+                </h1>
+                <p class="text-slate-500 mt-2">Panel de control de progresos de alumnos</p>
+            </div>
+
+            <div class="bg-white p-2 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-3 px-4">
+                <label class="text-xs font-bold uppercase text-slate-400">Viendo el día:</label>
+                <input type="date" [ngModel]="fechaSeleccionada()" (ngModelChange)="fechaSeleccionada.set($event)"
+                    class="font-bold text-indigo-600 outline-none cursor-pointer">
+            </div>
         </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -60,19 +67,20 @@
             <section class="lg:col-span-7 space-y-4">
                 <div class="flex items-center justify-between mb-4 px-2">
                     <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
-                        📋 Actividad Reciente
+                        📋 Registros del día
                     </h3>
-                    <span class="text-sm font-medium text-slate-400">{{ diario().length }} registros</span>
+                    <span class="text-sm font-medium text-slate-400">{{ diarioFiltrado().length }} encontrados</span>
                 </div>
 
-                @if (diario().length === 0) {
+                @if (diarioFiltrado().length === 0) {
                 <div class="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-slate-200">
-                    <div class="text-4xl mb-4">✍️</div>
-                    <p class="text-slate-400 italic">No hay registros hoy. ¡Empieza la clase!</p>
+                    <div class="text-4xl mb-4">📅</div>
+                    <p class="text-slate-400 italic text-balance">No hay registros para el día {{ fechaSeleccionada() |
+                        date:'dd/MM/yyyy' }}</p>
                 </div>
                 } @else {
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
-                    @for (item of diario(); track $index) {
+                <div class="grid grid-cols-1 gap-4">
+                    @for (item of diarioFiltrado(); track item.fecha) {
                     <div
                         class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all relative overflow-hidden group">
                         <div [class]="{
@@ -82,11 +90,16 @@
                                 }" class="absolute left-0 top-0 bottom-0 w-2">
                         </div>
 
+                        <button (click)="borrarEntrada(item)"
+                            class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 text-slate-300 hover:text-red-500 transition-all">
+                            🗑️
+                        </button>
+
                         <div class="flex justify-between items-start mb-3">
                             <div>
                                 <h4 class="font-black text-xl text-slate-900">{{ item.alumno }}</h4>
-                                <span
-                                    class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Alumno/a</span>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Registro de
+                                    sesión</span>
                             </div>
                             <span class="text-xs font-bold text-indigo-500 bg-indigo-50 px-3 py-1 rounded-full">
                                 {{ item.fecha | date:'HH:mm' }}
@@ -94,19 +107,18 @@
                         </div>
 
                         <p
-                            class="text-slate-600 text-base leading-relaxed mb-4 bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            class="text-slate-600 text-base leading-relaxed mb-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
                             {{ item.trabajo }}
                         </p>
 
-                        <div class="flex items-center gap-2">
-                            <span [class]="{
-                                    'text-amber-700 bg-amber-100': item.progreso === 'Iniciado',
-                                    'text-blue-700 bg-blue-100': item.progreso === 'En proceso',
-                                    'text-emerald-700 bg-emerald-100': item.progreso === 'Completado'
-                                    }" class="text-xs uppercase tracking-wider font-black px-3 py-1 rounded-lg">
-                                {{ item.progreso }}
-                            </span>
-                        </div>
+                        <span [class]="{
+                                'text-amber-700 bg-amber-100': item.progreso === 'Iniciado',
+                                'text-blue-700 bg-blue-100': item.progreso === 'En proceso',
+                                'text-emerald-700 bg-emerald-100': item.progreso === 'Completado'
+                                }"
+                            class="text-xs uppercase tracking-wider font-black px-3 py-1 rounded-lg inline-block">
+                            {{ item.progreso }}
+                        </span>
                     </div>
                     }
                 </div>
