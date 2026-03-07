@@ -3,6 +3,7 @@ import { LandingPageComponent } from './landing/landing-page/landing-page.compon
 import { ClassroomLayoutComponent } from './classroom/layout/classroomLayout/classroomLayout.component';
 import { WordSearchGeneratorComponent } from './resources/wordSearchGenerator/wordSearchGenerator.component';
 import { ResourcesMenuComponent } from './classroom/components/resourcesMenu/resourcesMenu.component';
+import { Registro } from './resources/registro/registro';
 
 export const routes: Routes = [
 
@@ -17,6 +18,10 @@ export const routes: Routes = [
             {
                 path: 'letras',
                 component: WordSearchGeneratorComponent
+            },
+            {
+                path: 'registro',
+                component: Registro
             },
             {
                 path: 'selector',
