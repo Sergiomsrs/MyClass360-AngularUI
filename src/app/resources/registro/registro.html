@@ -1,88 +1,117 @@
 <div class="min-h-screen bg-slate-50 p-4 md:p-8 font-sans text-slate-800">
-    <div class="max-w-7xl mx-auto space-y-10">
+    <div class="max-w-7xl mx-auto space-y-12">
 
-        <header class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <header class="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-200 pb-8">
             <div>
-                <h1 class="text-3xl md:text-4xl font-extrabold text-indigo-700 flex items-center gap-3">
-                    <span>📓</span> Diario de Sesión
+                <h1 class="text-3xl md:text-4xl font-black text-indigo-700 flex items-center gap-3">
+                    <span class="bg-indigo-100 p-2 rounded-2xl">📓</span> Diario de Sesión
                 </h1>
-                <p class="text-slate-500 mt-2">Panel de control de progresos de alumnos</p>
+                <p class="text-slate-500 mt-2 font-medium">Gestión educativa y seguimiento de progresos</p>
             </div>
 
-            <div class="bg-white p-2 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-3 px-4">
-                <label class="text-xs font-bold uppercase text-slate-400">Viendo el día:</label>
+            <div class="bg-white p-3 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-4 px-6">
+                <span class="text-xs font-bold uppercase text-slate-400 tracking-wider">Calendario:</span>
                 <input type="date" [ngModel]="fechaSeleccionada()" (ngModelChange)="fechaSeleccionada.set($event)"
-                    class="font-bold text-indigo-600 outline-none cursor-pointer">
+                    class="font-bold text-indigo-600 outline-none cursor-pointer bg-transparent">
             </div>
         </header>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
             <section class="lg:col-span-5 lg:sticky lg:top-8">
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
-                    <h3 class="text-xl font-bold mb-6 text-slate-700 border-b pb-4">Nueva Anotación</h3>
-                    <div class="space-y-5">
+                <div class="bg-white rounded-[2rem] shadow-sm border border-slate-200 p-8">
+                    <h3 class="text-xl font-bold mb-8 text-slate-800 flex items-center gap-2">
+                        <span class="w-2 h-6 bg-indigo-500 rounded-full"></span> Nueva Anotación
+                    </h3>
+
+                    <div class="space-y-6">
                         <div>
-                            <label class="block text-sm font-semibold text-slate-600 mb-2">Alumno</label>
+                            <label class="block text-xs font-bold text-slate-400 uppercase mb-2 ml-1">Alumno /
+                                Alumna</label>
                             <select [ngModel]="alumnoSeleccionado()" (ngModelChange)="alumnoSeleccionado.set($event)"
-                                class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500 appearance-none transition-all">
-                                <option value="">Selecciona un niño/a...</option>
+                                class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-indigo-500 appearance-none transition-all font-medium">
+                                <option value="">Selecciona un nombre...</option>
                                 @for (nino of alumnos; track nino) {
                                 <option [value]="nino">{{ nino }}</option>
                                 }
                             </select>
                         </div>
+
                         <div>
-                            <label class="block text-sm font-semibold text-slate-600 mb-2">Actividad</label>
+                            <label class="block text-xs font-bold text-slate-400 uppercase mb-2 ml-1">Descripción del
+                                trabajo</label>
                             <textarea [ngModel]="trabajoRealizado()" (ngModelChange)="trabajoRealizado.set($event)"
-                                class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 h-32 outline-none focus:ring-2 focus:ring-indigo-500 resize-none transition-all"></textarea>
+                                placeholder="¿Qué habéis trabajado hoy?"
+                                class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-5 py-4 h-36 outline-none focus:ring-2 focus:ring-indigo-500 resize-none transition-all font-medium"></textarea>
                         </div>
+
                         <div>
-                            <label class="block text-sm font-semibold text-slate-600 mb-3">Nivel de Logro</label>
-                            <div class="flex flex-wrap gap-2">
-                                @for (estado of ['Iniciado', 'En proceso', 'Completado']; track estado) {
+                            <label class="block text-xs font-bold text-slate-400 uppercase mb-3 ml-1">Estado
+                                Inicial</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                @for (estado of estados; track estado) {
                                 <button (click)="progresoSeleccionado.set(estado)" [class]="progresoSeleccionado() === estado 
-                                        ? 'bg-indigo-600 text-white shadow-md' 
-                                        : 'bg-white text-slate-600 border border-slate-300'"
-                                    class="flex-1 px-4 py-2 rounded-xl text-sm font-bold transition-all">
+                      ? 'bg-indigo-600 text-white shadow-indigo-200' 
+                      : 'bg-white text-slate-500 border border-slate-200 hover:bg-slate-50'"
+                                    class="px-2 py-3 rounded-xl text-[11px] font-black uppercase transition-all shadow-sm">
                                     {{ estado }}
                                 </button>
                                 }
                             </div>
                         </div>
+
                         <button (click)="agregarEntrada()"
-                            class="w-full bg-indigo-600 text-white font-bold py-4 rounded-2xl shadow-lg shadow-indigo-100 hover:bg-indigo-700 active:scale-95 transition-all">
-                            + Guardar en el Diario
+                            class="w-full bg-indigo-600 text-white font-bold py-5 rounded-2xl shadow-xl shadow-indigo-100 hover:bg-indigo-700 active:scale-[0.98] transition-all flex items-center justify-center gap-3 text-lg">
+                            <span>+</span> Guardar Registro
                         </button>
                     </div>
                 </div>
             </section>
 
-            <section class="lg:col-span-7 space-y-4">
-                <h3 class="text-xl font-bold text-slate-800 px-2">📋 Registros del día</h3>
+            <section class="lg:col-span-7 space-y-6">
+                <div class="flex items-center justify-between px-2">
+                    <h3 class="text-xl font-bold text-slate-800">📋 Actividad del Día</h3>
+                    <span class="bg-slate-200 text-slate-600 px-3 py-1 rounded-full text-xs font-bold">
+                        {{ diarioFiltrado().length }} entradas
+                    </span>
+                </div>
+
                 @if (diarioFiltrado().length === 0) {
                 <div
-                    class="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-slate-200 text-slate-400 italic">
-                    No hay registros para hoy.
+                    class="text-center py-24 bg-white rounded-[2rem] border-2 border-dashed border-slate-200 text-slate-400">
+                    <p class="text-lg font-medium italic">No hay notas registradas para hoy.</p>
                 </div>
                 } @else {
-                <div class="space-y-4">
+                <div class="space-y-5">
                     @for (item of diarioFiltrado(); track item.fecha) {
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative group">
-                        <div [class]="{'bg-amber-400': item.progreso === 'Iniciado', 'bg-blue-400': item.progreso === 'En proceso', 'bg-emerald-400': item.progreso === 'Completado'}"
-                            class="absolute left-0 top-0 bottom-0 w-2"></div>
+                    <div
+                        class="bg-white p-6 rounded-[1.5rem] border border-slate-200 shadow-sm relative group hover:shadow-md transition-all">
                         <button (click)="borrarEntrada(item)"
-                            class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 text-slate-300 hover:text-red-500 transition-all">🗑️</button>
-                        <div class="flex justify-between items-start mb-3">
-                            <h4 class="font-black text-xl text-slate-900">{{ item.alumno }}</h4>
-                            <span class="text-xs font-bold text-indigo-500 bg-indigo-50 px-3 py-1 rounded-full">{{
-                                item.fecha | date:'HH:mm' }}</span>
+                            class="absolute top-6 right-6 opacity-0 group-hover:opacity-100 text-slate-300 hover:text-red-500 transition-all">🗑️</button>
+
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h4 class="font-black text-2xl text-slate-900 leading-none">{{ item.alumno }}</h4>
+                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">{{
+                                    item.fecha | date:'HH:mm' }} · Sesión diaria</span>
+                            </div>
                         </div>
-                        <p class="text-slate-600 bg-slate-50 p-4 rounded-xl border border-slate-100 mb-4">{{
-                            item.trabajo }}</p>
-                        <span class="text-xs uppercase font-black px-3 py-1 rounded-lg inline-block"
-                            [ngClass]="{'bg-amber-100 text-amber-700': item.progreso === 'Iniciado', 'bg-blue-100 text-blue-700': item.progreso === 'En proceso', 'bg-emerald-100 text-emerald-700': item.progreso === 'Completado'}">
-                            {{ item.progreso }}
-                        </span>
+
+                        <p
+                            class="text-slate-600 bg-slate-50 p-5 rounded-2xl border border-slate-100 mb-5 leading-relaxed font-medium">
+                            {{ item.trabajo }}
+                        </p>
+
+                        <div class="flex flex-wrap gap-2">
+                            @for (e of estados; track e) {
+                            <button (click)="cambiarProgreso(item, e)" [class]="item.progreso === e 
+                        ? (e === 'Completado' ? 'bg-emerald-500 text-white' : e === 'En proceso' ? 'bg-blue-500 text-white' : 'bg-amber-500 text-white')
+                        : 'bg-slate-100 text-slate-400 hover:bg-slate-200'"
+                                class="px-4 py-1.5 rounded-lg text-[10px] font-black uppercase transition-all">
+                                {{ e }}
+                            </button>
+                            }
+                        </div>
                     </div>
                     }
                 </div>
@@ -90,41 +119,66 @@
             </section>
         </div>
 
-        <section class="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-white shadow-2xl">
-            <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-6">
-                <div>
-                    <h2 class="text-3xl font-black">🔍 Expediente por Alumno</h2>
-                    <p class="text-slate-400">Ver todo el historial acumulado</p>
-                </div>
-                <select [ngModel]="filtroAlumno()" (ngModelChange)="filtroAlumno.set($event)"
-                    class="bg-slate-800 border border-slate-700 text-white rounded-2xl px-6 py-4 outline-none focus:ring-2 focus:ring-indigo-500 text-lg font-bold min-w-[280px]">
-                    <option value="">Seleccionar niño/a...</option>
-                    @for (nino of alumnos; track nino) {
-                    <option [value]="nino">{{ nino }}</option>
-                    }
-                </select>
-            </div>
-
-            @if (filtroAlumno()) {
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                @for (h of historialPorAlumno(); track h.fecha) {
-                <div class="bg-slate-800 p-6 rounded-3xl border border-slate-700">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-xs font-bold text-slate-400">{{ h.fecha | date:'dd/MM/yyyy - HH:mm' }}</span>
-                        <span class="text-[10px] uppercase font-black px-2 py-1 rounded bg-slate-700">{{ h.progreso
-                            }}</span>
+        <section class="bg-indigo-50 rounded-[3rem] p-8 md:p-12 border border-indigo-100">
+            <div class="max-w-4xl mx-auto">
+                <div
+                    class="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6 text-center md:text-left">
+                    <div>
+                        <h2 class="text-3xl font-black text-indigo-900">🔍 Expediente Histórico</h2>
+                        <p class="text-indigo-600 font-medium">Seguimiento individual de objetivos</p>
                     </div>
-                    <p class="text-slate-200">{{ h.trabajo }}</p>
+
+                    <div class="relative">
+                        <select [ngModel]="filtroAlumno()" (ngModelChange)="filtroAlumno.set($event)"
+                            class="bg-white border-2 border-indigo-200 text-indigo-700 rounded-2xl px-8 py-4 outline-none focus:ring-4 focus:ring-indigo-100 text-lg font-bold min-w-[300px] appearance-none shadow-sm">
+                            <option value="">Seleccionar alumno/a...</option>
+                            @for (nino of alumnos; track nino) {
+                            <option [value]="nino">{{ nino }}</option>
+                            }
+                        </select>
+                    </div>
                 </div>
-                } @empty {
-                <p class="text-slate-500 italic col-span-2">No hay registros históricos para este alumno.</p>
+
+                @if (filtroAlumno()) {
+                <div class="space-y-6">
+                    @for (h of historialPorAlumno(); track h.fecha) {
+                    <div
+                        class="bg-white p-8 rounded-[2rem] shadow-sm border border-indigo-100 flex flex-col md:flex-row gap-6 items-start">
+                        <div class="md:w-32 flex-shrink-0">
+                            <span class="block text-indigo-800 font-black text-lg leading-none">{{ h.fecha | date:'dd'
+                                }}</span>
+                            <span class="text-xs font-bold text-indigo-300 uppercase tracking-tighter">{{ h.fecha |
+                                date:'MMM yyyy' }}</span>
+                        </div>
+
+                        <div class="flex-1">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                @for (e of estados; track e) {
+                                <button (click)="cambiarProgreso(h, e)" [class]="h.progreso === e 
+                          ? (e === 'Completado' ? 'bg-emerald-500 text-white' : e === 'En proceso' ? 'bg-blue-500 text-white' : 'bg-amber-500 text-white')
+                          : 'bg-slate-50 text-slate-300 border border-slate-100'"
+                                    class="px-3 py-1 rounded-lg text-[9px] font-black uppercase transition-all shadow-sm">
+                                    {{ e }}
+                                </button>
+                                }
+                            </div>
+                            <p class="text-slate-700 text-lg leading-relaxed font-medium">{{ h.trabajo }}</p>
+                        </div>
+                    </div>
+                    } @empty {
+                    <div
+                        class="text-center py-10 bg-indigo-100/50 rounded-3xl border-2 border-dashed border-indigo-200 text-indigo-400">
+                        No hay registros previos para este alumno.
+                    </div>
+                    }
+                </div>
+                } @else {
+                <div class="text-center py-20 bg-white/50 rounded-[2.5rem] border-2 border-dashed border-indigo-200">
+                    <span class="text-4xl block mb-4">👤</span>
+                    <p class="text-indigo-400 font-bold">Elige un nombre para auditar su progreso completo</p>
+                </div>
                 }
             </div>
-            } @else {
-            <div class="text-center py-10 border-2 border-dashed border-slate-700 rounded-3xl text-slate-500">
-                Selecciona un alumno para ver sus entradas pendientes y realizadas.
-            </div>
-            }
         </section>
     </div>
 </div>

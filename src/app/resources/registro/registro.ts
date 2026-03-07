@@ -10,15 +10,16 @@ import { CommonModule } from '@angular/common';
 })
 export class Registro {
   alumnos = ['Leo', 'Sofía', 'Martín', 'Elena', 'Hugo'];
+  estados = ['Iniciado', 'En proceso', 'Completado'];
 
+  // Signals del formulario y filtros
   alumnoSeleccionado = signal('');
   trabajoRealizado = signal('');
   progresoSeleccionado = signal('Iniciado');
   fechaSeleccionada = signal(new Date().toISOString().split('T')[0]);
-
-  // NUEVO: Para la vista por niño
   filtroAlumno = signal('');
 
+  // Fuente de datos única
   diario = signal<any[]>(this.cargarLocalStorage());
 
   constructor() {
@@ -27,7 +28,7 @@ export class Registro {
     });
   }
 
-  // 1. Filtrado por Día (el que ya usas arriba)
+  // Filtrado reactivo por día
   diarioFiltrado = computed(() => {
     return this.diario().filter(item => {
       const fechaDoc = new Date(item.fecha).toISOString().split('T')[0];
@@ -35,7 +36,7 @@ export class Registro {
     });
   });
 
-  // 2. NUEVO: Filtrado por Niño (Historial completo del alumno)
+  // Filtrado reactivo por alumno (Expediente)
   historialPorAlumno = computed(() => {
     const busqueda = this.filtroAlumno();
     if (!busqueda) return [];
@@ -62,6 +63,17 @@ export class Registro {
     }, ...actual]);
 
     this.trabajoRealizado.set('');
+  }
+
+  // Permite editar el progreso desde cualquier vista
+  cambiarProgreso(item: any, nuevoEstado: string) {
+    this.diario.update(actual => {
+      const index = actual.findIndex(i => i === item);
+      if (index !== -1) {
+        actual[index].progreso = nuevoEstado;
+      }
+      return [...actual];
+    });
   }
 
   borrarEntrada(itemABorrar: any) {
