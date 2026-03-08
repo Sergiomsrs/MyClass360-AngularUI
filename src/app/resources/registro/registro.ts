@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './registro.html',
 })
 export class Registro {
-  alumnos = ['Leo', 'Sofía', 'Martín', 'Elena', 'Hugo'];
+  alumnos = ['Nico', 'Leo', 'Sofía', 'Martín', 'Elena', 'Hugo'];
   estados = ['Iniciado', 'En proceso', 'Completado'];
 
   // Signals del formulario y filtros
