@@ -1,17 +1,45 @@
-<div class="hero min-h-screen" style="background-image: url('assets/landingImage.webp');">
+<div class="hero min-h-screen" style="background-image: url('assets/fondo-clase.webp');">
+
     <div class="hero-overlay" style="background: rgba(0,0,0,0.6);"></div>
-    <div class="hero-content text-center">
-        <div class="max-w-md" style="color: #fff; text-shadow: 0 2px 8px #000;">
-            <h1 class="mb-5 text-5xl font-bold">Bienvenido a MyClass360</h1>
-            <p class="mb-5">
-                MyClass360 será un sistema integral para la gestión de alumnos, clases y tareas.<br><br>
-                Mientras tanto, hemos dado el primer paso: un <strong>generador de recursos educativos</strong> pensado
-                para facilitar tu trabajo en el aula.<br><br>
-                <strong>Primer recurso disponible:</strong><br>
-                - Crea tus propias <em>sopas de letras</em> en segundos, listas para imprimir o compartir.<br><br>
-                ¡Muy pronto añadiremos más herramientas!
+
+    <div class="hero-content text-center px-4">
+        <div class="max-w-xl text-white" style="text-shadow: 0 2px 8px #000;">
+
+            <h1 class="mb-6 text-4xl md:text-5xl font-bold">
+                Bienvenido a MyClass360
+            </h1>
+
+            <p class="mb-6 text-lg leading-relaxed">
+                <strong>MyClass360</strong> es una herramienta pensada para facilitar el trabajo diario en el aula.
+                Su objetivo principal es ayudarte a llevar un <strong>registro claro del progreso de tus
+                    alumnos</strong>,
+                anotando lo trabajado en cada sesión y consultando el historial cuando lo necesites.
             </p>
-            <button class="btn btn-primary" routerLink="/class/selector">Probar ahora</button>
+
+            <p class="mb-6 text-lg leading-relaxed">
+                Además, la plataforma incluye <strong>recursos educativos complementarios</strong> que pueden ayudarte
+                a preparar actividades rápidamente.
+            </p>
+
+            <p class="mb-8 text-lg leading-relaxed">
+                <strong>Recurso disponible actualmente:</strong><br>
+                • Generador de <em>sopas de letras</em> para crear actividades listas para imprimir o compartir.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+
+                <button class="btn btn-primary btn-lg" routerLink="/class/registro">
+                    Ir al registro de clase
+                </button>
+
+                <button class="btn btn-outline btn-lg text-white border-white hover:bg-white hover:text-black"
+                    routerLink="/class/selector">
+                    Ver recursos
+                </button>
+
+            </div>
+
         </div>
     </div>
+
 </div>

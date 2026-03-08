@@ -132,7 +132,7 @@
 
                     <div class="relative">
                         <select [ngModel]="filtroAlumno()" (ngModelChange)="filtroAlumno.set($event)"
-                            class="bg-white border-2 border-blue-300 text-blue-900 rounded-2xl px-8 py-4 outline-none focus:ring-4 focus:ring-blue-300 text-lg font-bold min-w-[300px] appearance-none shadow-md hover:shadow-lg transition-all">
+                            class="bg-white border-2 border-blue-300 text-blue-900 rounded-2xl px-8 py-4 outline-none focus:ring-4 focus:ring-blue-300 text-lg font-bold w-full md:min-w-[300px] appearance-none shadow-md hover:shadow-lg transition-all">
                             <option value="">Seleccionar alumno/a...</option>
                             @for (nino of alumnos; track nino) {
                             <option [value]="nino">{{ nino }}</option>
